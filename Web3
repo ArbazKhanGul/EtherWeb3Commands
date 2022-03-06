@@ -1,0 +1,108 @@
+truffle migrate
+truffle migrate --reset
+truffle migrate --network rinkeby
+
+
+//remove web3 error
+https://github.com/ChainSafe/web3.js#troubleshooting-and-known-issues
+
+web3\\
+let Web3=require('web3');
+let web3=new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:7545"));
+
+//fetch Balance of any account;
+web3.eth.getBalance("0x80255fE07007c663B29c3C0B82673AD0d1802437")  \\it return promise;
+
+//convert wei to ether
+web3.utils.fromWei(result,"ether");
+
+//convert ether to wei
+web3.utils.toWei("5","ether")
+
+//sendTransaction
+web3.eth.sendTransaction({from:"0x80255fE07007c663B29c3C0B82673AD0d1802437",to:"0x3c612d63F70B2Ea58977C04390E0737a26f41Eb9",value:web3.utils.toWei("5","ether")});
+
+//connect with contract
+let cont=new web3.eth.Contract(ABI,"Contract Address");
+
+//get all accounts
+web3.eth.getAccounts();
+
+//call any get methods
+contract.methods.methodName().call()  //it return promise
+
+//call any set methods
+cont.methods.set(20).send({from:"Account address from where you want to request"});
+
+
+//get transaction nonce
+var count =await  web3.eth.getTransactionCount(`${accounts[0]}`);
+
+//hardat
+
+npm i -dev hardhat
+
+npx hardhat
+
+npm install --save-dev @nomiclabs/hardhat-ethers ethers @nomiclabs/hardhat-waffle ethereum-waffle chai
+
+
+//for deploy up to ethers install remaining is for testing
+
+npx hardhat compile
+
+npx hardhat test //testing
+
+npx hardhat run scripts/deploy.js //deployement
+
+npx hardhat run scripts/deploy.js --network rinkeby  //for deploment to testnet
+
+
+
+
+nvm list
+nvm use 16.0.0
+
+//tokenid  through transaction
+web3.utils.hexToNumber(has.logs[0].topics[3])
+
+//get receipt through has
+ const res=await web3.eth.getTransactionReceipt(has.transactionHash)
+
+//listen contract event when transaction occur
+
+    //for converting event at front end
+     const result=web3.eth.abi.decodeLog([{
+         type: 'string',
+         name: 'demo'
+     },
+     {
+         type: 'string',
+         name: 'eventname',
+         indexed: true
+     },
+     {
+         type: 'uint256',
+         name: 'first',
+         indexed: true
+     },
+     ,{
+        type: 'uint8',
+        name: 'second',
+        indexed: true
+    }],has.logs[2].data,has.logs[2].topics);
+
+
+//interacting with console
+
+ npx hardhat console --network localhost
+const Box = await ethers.getContractFactory('Box');
+undefined
+const box = await Box.attach('0x5FbDB2315678afecb367f032d93F642f64180aa3')
+undefined
+
+await box.store(42) //method
+
+accounts = await ethers.provider.listAccounts() //get all accounts
+
+
