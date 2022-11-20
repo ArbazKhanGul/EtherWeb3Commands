@@ -95,3 +95,23 @@ await transaction.wait()
 const erc20 = new ethers.Contract(address, abi, provider);
 const recipient = "SOME_ADDRESS_HERE";
 const estimation = await erc20.estimateGas.transfer(recipient, 100);
+
+
+//About gas price and gas limit
+
+I think we don't even need to pass the gas limit and gas price as it can be automatically set.
+Source: https://docs.ethers.io/v5/api/contract/contract/#contract-functionsSend
+But we can override the gas limit and gas price.
+
+Example with overridden gas limit and gas price.
+
+   contract.methodName(
+     params,
+    { gasLimit: ethers.utils.hexlify(250000), gasPrice: ethers.utils.parseUnits('5', "gwei") },
+     );
+with automated gas limit and gas price set by ether
+
+   contract.methodName(
+     params
+     );
+Hope this will help.
