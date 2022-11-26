@@ -105,7 +105,9 @@ await box.store(42) //method
 
 accounts = await ethers.provider.listAccounts() //get all accounts
 
-let signer1 = provider.getSigner(1); //to get second attach address as signer
+let signer=await ethers.provider.getSigner(1); //to get second attach address as signer
 
 await nft.connect(signer).getFee() //to change address that send transaction
+
+await ethers.provider.getBlockNumber() //to get block number
 
